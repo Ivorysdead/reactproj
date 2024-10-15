@@ -3,14 +3,32 @@ import logo from './logo.svg';
 import './App.css';
 
 
-export default function MyButton() {
+import { useState } from 'react';
+
+export default function MyApp() {
+    const [count, setCount] = useState(0);
+
     function handleClick() {
-        alert('You clicked me!');
+        setCount(count + 1);
     }
 
     return (
-        <button onClick={handleClick}>
-            Click me
-        </button>
+        <div>
+            <h1>Counters that update together</h1>
+            <MyButton count={count} onClick={handleClick} />
+            <MyButton count={count} onClick={handleClick} />
+        </div>
     );
 }
+
+class MyButton extends React.Component<{ count: any, onClick: any }> {
+    render() {
+        let {count, onClick} = this.props;
+        return (
+            <button onClick={onClick}>
+                Clicked {count} times
+            </button>
+        );
+    }
+}
+
