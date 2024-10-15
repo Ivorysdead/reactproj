@@ -3,35 +3,25 @@ import logo from './logo.svg';
 import './App.css';
 
 
-const user = {
-    name: 'Hedy Lamarr',
-    imageUrl: 'https://i.imgur.com/yXOvdOSs.jpg',
-    imageSize: 90,
-};
+const products = [
+    { title: 'Cabbage', isFruit: false, id: 1 },
+    { title: 'Garlic', isFruit: false, id: 2 },
+    { title: 'Apple', isFruit: true, id: 3 },
+];
 
-function AdminPanel() {
-    return null;
-}
+export default function ShoppingList() {
+    const listItems = products.map(product =>
+        <li
+            key={product.id}
+            style={{
+                color: product.isFruit ? 'magenta' : 'darkgreen'
+            }}
+        >
+            {product.title}
+        </li>
+    );
 
-function LoginForm() {
-    return null;
-}
-
-export default function Profile() {
-    let content;
     return (
-        <>
-            if (isLoggedIn) {
-            content = <AdminPanel/>
-        } else {
-            content = <LoginForm/>
-        }
-            return (
-            <div>
-                {content}
-            </div>
-            )
-        </>
+        <ul>{listItems}</ul>
     );
 }
-
