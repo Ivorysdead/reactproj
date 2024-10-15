@@ -9,19 +9,28 @@ const user = {
     imageSize: 90,
 };
 
+function AdminPanel() {
+    return null;
+}
+
+function LoginForm() {
+    return null;
+}
+
 export default function Profile() {
+    let content;
     return (
         <>
-            <h1>{user.name}</h1>
-            <img
-                className="avatar"
-                src={user.imageUrl}
-                alt={'Photo of ' + user.name}
-                style={{
-                    width: user.imageSize,
-                    height: user.imageSize
-                }}
-            />
+            if (isLoggedIn) {
+            content = <AdminPanel/>
+        } else {
+            content = <LoginForm/>
+        }
+            return (
+            <div>
+                {content}
+            </div>
+            )
         </>
     );
 }
